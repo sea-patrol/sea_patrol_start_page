@@ -1,16 +1,113 @@
-# React + Vite
+# Стартовая страница Sea Patrol
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Страница проекта Sea Patrol (морской MMO RPG игры)
 
-Currently, two official plugins are available:
+## Что внутри
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** — библиотека для создания интерфейса
+- **Vite** — быстрый сборщик проекта
+- **Three.js + React Three Fiber** — 3D-графика в браузере
 
-## React Compiler
+## Быстрый старт
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Установите Node.js
 
-## Expanding the ESLint configuration
+Скачайте с [nodejs.org](https://nodejs.org/) (версия 18 или новее).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Установите зависимости
+
+```bash
+npm install
+```
+
+### 3. Запустите проект
+
+```bash
+npm run dev
+```
+
+Откройте ссылку из терминала (обычно `http://localhost:5173`).
+
+## Доступные команды
+
+| Команда | Описание |
+|---------|----------|
+| `npm install` | Установить все зависимости |
+| `npm run dev` | Запустить сервер разработки |
+| `npm run build` | Собрать проект для продакшена |
+| `npm run preview` | Посмотреть продакшен-сборку локально |
+| `npm test` | Запустить тесты |
+| `npm run lint` | Проверить код на ошибки |
+
+## Используемые пакеты
+
+### Основные
+
+```bash
+# React и ReactDOM
+npm install react react-dom
+
+# Vite и плагин для React
+npm install -D vite @vitejs/plugin-react
+
+# Three.js и React Three Fiber
+npm install three @react-three/fiber @react-three/drei
+```
+
+### Для тестирования
+
+```bash
+# Vitest и Testing Library
+npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+
+# Тестирование 3D-сцен
+npm install -D @react-three/test-renderer
+
+# Полифилл для ResizeObserver (нужен для тестов)
+npm install -D @juggle/resize-observer
+```
+
+### Для линтинга
+
+```bash
+npm install -D eslint eslint-plugin-react-hooks eslint-plugin-react-refresh globals
+```
+
+## Структура проекта
+
+```
+sea_patrol_start_page/
+├── public/              # Статические файлы (картинки)
+│   ├── sea.png          # Фон моря
+│   └── ship.png         # Изображение корабля
+├── src/
+│   ├── App.jsx          # Главный компонент
+│   ├── SeaPlane.jsx     # Компонент моря
+│   ├── Ship.jsx         # Компонент корабля
+│   ├── main.jsx         # Точка входа
+│   └── index.css        # Стили
+├── index.html           # HTML-шаблон
+└── package.json         # Зависимости и скрипты
+```
+
+## Как это работает
+
+1. **SeaPlane** — плоскость с текстурой моря на заднем плане (z: -10)
+2. **Ship** — плоскость с кораблём на переднем плане (z: -5)
+
+Корабль перекрывает море, создавая эффект плавания по волнам.
+
+## Разработка
+
+Проект использует **ES Modules** — все импорты/экспорты через `import`/`export`.
+
+Компоненты пишутся на **JSX** — JavaScript с HTML-подобным синтаксисом.
+
+```jsx
+// Пример компонента
+function MyComponent() {
+  return <div>Привет!</div>
+}
+
+export default MyComponent
+```
