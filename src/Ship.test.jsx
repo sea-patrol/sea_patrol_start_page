@@ -1,6 +1,6 @@
 import { act, create } from '@react-three/test-renderer'
 
-test('рендерит корабль с planeGeometry и прозрачной текстурой', async () => {
+test('рендерит корабль с анимацией движения и перспективы', async () => {
   const renderer = await create(<mesh />)
   
   await act(async () => {
