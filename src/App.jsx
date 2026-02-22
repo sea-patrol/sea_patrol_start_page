@@ -1,6 +1,13 @@
+import { Canvas } from '@react-three/fiber'
+import RotatingCube from './RotatingCube'
+
 function App() {
   return (
-    <h1>Hello World</h1>
+    <Canvas style={{ width: '100vw', height: '100vh', margin: 0 }}>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <RotatingCube />
+    </Canvas>
   )
 }
 
