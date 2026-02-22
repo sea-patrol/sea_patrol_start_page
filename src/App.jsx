@@ -5,7 +5,6 @@ import SeaPlane from "./SeaPlane";
 import Ship from "./Ship";
 import DebugInfo from "./DebugInfo";
 import Wave from "./Wave";
-import Splash from "./Splash";
 import { useState } from "react";
 
 // DEBUG режим: true для включения визуальных помощников
@@ -48,14 +47,6 @@ function App() {
           phase={Math.PI}
         />
         <Ship onPositionChange={setShipPosition} />
-        <Splash
-          position={[
-            shipPosition.x - 2,
-            shipPosition.y - 2,
-            shipPosition.z + 1,
-          ]}
-          color="#a8d5ff"
-        />
 
         {DEBUG && (
           <>
