@@ -8,6 +8,7 @@ function Wave({
   amplitude = 0.5,
   frequency = 0.5,
   phase = 0,
+  opacity = 0.8,
 }) {
   const meshRef = useRef();
   const map = useTexture(texture);
@@ -29,7 +30,7 @@ function Wave({
   return (
     <mesh ref={meshRef}>
       <planeGeometry args={[53, 24]} />
-      <meshBasicMaterial map={map} transparent alphaTest={0.1} />
+      <meshBasicMaterial map={map} transparent alphaTest={0.1} opacity={opacity} />
     </mesh>
   );
 }

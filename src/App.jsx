@@ -23,6 +23,7 @@ function App() {
           amplitude={1.3}
           frequency={0.8}
           phase={0}
+          opacity={1}
         />
         <Wave
           texture="/wave2.png"
