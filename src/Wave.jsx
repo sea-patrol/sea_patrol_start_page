@@ -28,9 +28,9 @@ function Wave({
   });
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} receiveShadow>
       <planeGeometry args={[53, 24]} />
-      <meshBasicMaterial map={map} transparent alphaTest={0.1} opacity={opacity} />
+      <meshStandardMaterial map={map} transparent alphaTest={0.1} opacity={opacity} roughness={0.2} metalness={0.1} />
     </mesh>
   );
 }

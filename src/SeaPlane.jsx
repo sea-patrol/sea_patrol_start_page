@@ -4,9 +4,9 @@ function SeaPlane() {
   const texture = useTexture("/sea.png");
 
   return (
-    <mesh position={[0, 0, -10]}>
+    <mesh position={[0, 0, -10]} receiveShadow>
       <planeGeometry args={[53, 24]} />
-      <meshBasicMaterial map={texture} />
+      <meshStandardMaterial map={texture} roughness={0.3} metalness={0.1} />
     </mesh>
   );
 }

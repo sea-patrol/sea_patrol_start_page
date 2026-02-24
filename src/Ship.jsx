@@ -53,9 +53,9 @@ function Ship({ onPositionChange }) {
 
   return (
     <group ref={meshRef}>
-      <mesh>
+      <mesh castShadow receiveShadow>
         <planeGeometry args={[8, 8]} />
-        <meshBasicMaterial map={texture} transparent alphaTest={0.5} />
+        <meshStandardMaterial map={texture} transparent alphaTest={0.5} roughness={0.4} metalness={0.2} />
       </mesh>
       {splashPositions.map((splash, i) => (
         <Splash key={i} position={splash.offset} color={splash.color} />

@@ -5,6 +5,7 @@ import SeaPlane from "./SeaPlane";
 import Ship from "./Ship";
 import DebugInfo from "./DebugInfo";
 import Wave from "./Wave";
+import DayNightCycle from "./DayNightCycle";
 import { useState } from "react";
 
 // DEBUG режим: true для включения визуальных помощников
@@ -16,6 +17,7 @@ function App() {
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <Canvas style={{ width: "100%", height: "100%", margin: 0 }}>
+        <DayNightCycle />
         <SeaPlane />
         <Wave
           texture="/wave1.png"
