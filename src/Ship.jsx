@@ -2,6 +2,7 @@ import { useTexture } from "@react-three/drei";
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import Splash from "./Splash";
+import Flashlight from "./Flashlight";
 
 const DURATION = 60; // секунд на полный цикл
 const START_POS = { x: 26, y: -5, z: -10 }; // горизонт, далеко
@@ -55,11 +56,20 @@ function Ship({ onPositionChange }) {
     <group ref={meshRef}>
       <mesh castShadow receiveShadow>
         <planeGeometry args={[8, 8]} />
-        <meshStandardMaterial map={texture} transparent alphaTest={0.5} roughness={0.4} metalness={0.2} />
+        <meshStandardMaterial
+          map={texture}
+          transparent
+          alphaTest={0.5}
+          roughness={0.4}
+          metalness={0.2}
+        />
       </mesh>
       {splashPositions.map((splash, i) => (
         <Splash key={i} position={splash.offset} color={splash.color} />
       ))}
+      <Flashlight position={[-2, -2.2, 0.7]} />
+      <Flashlight position={[2.5, -2.2, 0.7]} />
+      <Flashlight position={[0, 2.5, 0.7]} />
     </group>
   );
 }
