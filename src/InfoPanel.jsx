@@ -4,16 +4,16 @@ function InfoPanel() {
       style={{
         position: "absolute",
         top: "50%",
-        left: 20,
-        transform: "translateY(-50%)",
-        background: "rgba(255, 255, 255, 0.95)",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        background: "rgba(255, 255, 255, 0.85)",
         color: "#1a1a2e",
-        padding: "25px",
+        padding: "30px",
         fontFamily: "Arial, sans-serif",
         fontSize: "14px",
         borderRadius: "12px",
         zIndex: 1000,
-        maxWidth: "380px",
+        maxWidth: "500px",
         pointerEvents: "auto",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
       }}
@@ -40,7 +40,8 @@ function InfoPanel() {
           color: "#333",
         }}
       >
-        Игра-патрулирование морских границ. Управляйте кораблём, следите за порядком в акватории.
+        Игра-патрулирование морских границ. Управляйте кораблём, следите за
+        порядком в акватории.
       </p>
       <div style={{ marginTop: "20px" }}>
         <h3
