@@ -3,6 +3,7 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import Splash from "./Splash";
 import Flashlight from "./Flashlight";
+import shipTexture from "./assets/ship.png";
 
 const DURATION = 60; // секунд на полный цикл
 const START_POS = { x: 26, y: -5, z: -8 }; // горизонт, далеко
@@ -13,7 +14,7 @@ const END_SCALE = 1.4;
 function Ship({ onPositionChange }) {
   const meshRef = useRef();
   const splashRefs = useRef([]);
-  const texture = useTexture("/ship.png");
+  const texture = useTexture(shipTexture);
 
   // Позиции брызг относительно корабля
   const splashPositions = useMemo(

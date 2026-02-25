@@ -1,3 +1,5 @@
+import logo from "./assets/logo.png";
+
 function InfoPanel() {
   return (
     <div
@@ -20,7 +22,7 @@ function InfoPanel() {
     >
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <img
-          src="/logo.png"
+          src={logo}
           alt="Sea Patrol Logo"
           style={{
             width: "100%",

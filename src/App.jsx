@@ -8,6 +8,10 @@ import DayNightCycle from "./DayNightCycle";
 import InfoPanel from "./InfoPanel";
 import DebugOverlay from "./DebugOverlay";
 import { useState } from "react";
+import wave1 from "./assets/wave1.png";
+import wave2 from "./assets/wave2.png";
+import wave3 from "./assets/wave3.png";
+import wave4 from "./assets/wave4.png";
 
 // DEBUG режим: true для включения визуальных помощников
 const DEBUG = false;
@@ -23,7 +27,7 @@ function App() {
         <DayNightCycle />
         <SeaPlane />
         <Wave
-          texture="/wave1.png"
+          texture={wave1}
           position={[0, 0, -9.6]}
           amplitude={1.3}
           frequency={0.8}
@@ -31,21 +35,21 @@ function App() {
           opacity={1}
         />
         <Wave
-          texture="/wave2.png"
+          texture={wave2}
           position={[0, 0, -9.7]}
           amplitude={1}
           frequency={0.7}
           phase={Math.PI}
         />
         <Wave
-          texture="/wave3.png"
+          texture={wave3}
           position={[0, 0, -9.8]}
           amplitude={0.7}
           frequency={0.5}
           phase={Math.PI}
         />
         <Wave
-          texture="/wave4.png"
+          texture={wave4}
           position={[0, 0, -9.9]}
           amplitude={0.5}
           frequency={0.4}

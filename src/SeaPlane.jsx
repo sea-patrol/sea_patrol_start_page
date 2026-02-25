@@ -1,7 +1,8 @@
 import { useTexture } from "@react-three/drei";
+import seaTexture from "./assets/sea.png";
 
 function SeaPlane() {
-  const texture = useTexture("/sea.png");
+  const texture = useTexture(seaTexture);
 
   return (
     <mesh position={[0, 0, -10]} receiveShadow>
