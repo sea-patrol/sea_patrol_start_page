@@ -5,7 +5,7 @@ import Splash from "./Splash";
 import Flashlight from "./Flashlight";
 
 const DURATION = 60; // секунд на полный цикл
-const START_POS = { x: 26, y: -5, z: -10 }; // горизонт, далеко
+const START_POS = { x: 26, y: -5, z: -8 }; // горизонт, далеко
 const END_POS = { x: -13, y: 0, z: 3 }; // близко к камере
 const START_SCALE = 0.2;
 const END_SCALE = 1.4;

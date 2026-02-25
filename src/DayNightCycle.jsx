@@ -31,7 +31,7 @@ function DayNightCycle() {
       lightRef.current.position.set(sunX, sunY, sunZ);
       lightRef.current.target.position.set(0, 0, -20);
       lightRef.current.target.updateMatrixWorld();
-      lightRef.current.intensity = sunIntensity * 1.5;
+      lightRef.current.intensity = sunIntensity * 3.5;
       lightRef.current.castShadow = sunIntensity > 0.1;
       lightRef.current.shadow.mapSize.width = 1024;
       lightRef.current.shadow.mapSize.height = 1024;
