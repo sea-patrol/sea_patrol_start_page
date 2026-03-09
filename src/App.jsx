@@ -7,6 +7,8 @@ import Wave from "./Wave";
 import DayNightCycle from "./DayNightCycle";
 import InfoPanel from "./InfoPanel";
 import DebugOverlay from "./DebugOverlay";
+import LoadingScreen from "./LoadingScreen";
+import { useAssetLoader } from "./hooks/useAssetLoader";
 import { useState } from "react";
 import wave1 from "./assets/wave1.png";
 import wave2 from "./assets/wave2.png";
@@ -17,64 +19,86 @@ import wave4 from "./assets/wave4.png";
 const DEBUG = false;
 
 function App() {
+  const { loaded, progress, loadedCount, total } = useAssetLoader();
   const [shipPosition, setShipPosition] = useState({ x: 0, y: 0, z: 0 });
 
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
-      <InfoPanel />
+    <>
+      {/* Экран загрузки */}
+      <LoadingScreen
+        loaded={loaded}
+        progress={progress}
+        loadedCount={loadedCount}
+        total={total}
+      />
 
-      <Canvas style={{ width: "100%", height: "100%", margin: 0 }}>
-        <DayNightCycle />
-        <SeaPlane />
-        <Wave
-          texture={wave1}
-          position={[0, 0, -9.6]}
-          amplitude={1.3}
-          frequency={0.8}
-          phase={0}
-          opacity={1}
-        />
-        <Wave
-          texture={wave2}
-          position={[0, 0, -9.7]}
-          amplitude={1}
-          frequency={0.7}
-          phase={Math.PI}
-        />
-        <Wave
-          texture={wave3}
-          position={[0, 0, -9.8]}
-          amplitude={0.7}
-          frequency={0.5}
-          phase={Math.PI}
-        />
-        <Wave
-          texture={wave4}
-          position={[0, 0, -9.9]}
-          amplitude={0.5}
-          frequency={0.4}
-          phase={Math.PI}
-        />
-        <Ship onPositionChange={setShipPosition} />
+      {/* Основной контент */}
+      <div
+        className="app-container"
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.5s ease-out",
+          pointerEvents: loaded ? "auto" : "none",
+        }}
+      >
+        <InfoPanel />
 
-        {DEBUG && (
-          <>
-            {/* Оси координат: X=красный, Y=зелёный, Z=синий */}
-            <primitive object={new THREE.AxesHelper(10)} />
+        <Canvas style={{ width: "100%", height: "100%", margin: 0 }}>
+          <DayNightCycle />
+          <SeaPlane />
+          <Wave
+            texture={wave1}
+            position={[0, 0, -9.6]}
+            amplitude={1.3}
+            frequency={0.8}
+            phase={0}
+            opacity={1}
+          />
+          <Wave
+            texture={wave2}
+            position={[0, 0, -9.7]}
+            amplitude={1}
+            frequency={0.7}
+            phase={Math.PI}
+          />
+          <Wave
+            texture={wave3}
+            position={[0, 0, -9.8]}
+            amplitude={0.7}
+            frequency={0.5}
+            phase={Math.PI}
+          />
+          <Wave
+            texture={wave4}
+            position={[0, 0, -9.9]}
+            amplitude={0.5}
+            frequency={0.4}
+            phase={Math.PI}
+          />
+          <Ship onPositionChange={setShipPosition} />
 
-            {/* Сетка на плоскости XY для понимания масштаба */}
-            <primitive
-              object={new THREE.GridHelper(50, 50, "#444", "#222")}
-              position={[0, 0, -10]}
-            />
+          {DEBUG && (
+            <>
+              {/* Оси координат: X=красный, Y=зелёный, Z=синий */}
+              <primitive object={new THREE.AxesHelper(10)} />
 
-            {/* Управление камерой мышкой */}
-            <OrbitControls makeDefault />
-            <DebugOverlay shipPosition={shipPosition} />
-          </>
-        )}
-      </Canvas>
-    </div>
+              {/* Сетка на плоскости XY для понимания масштаба */}
+              <primitive
+                object={new THREE.GridHelper(50, 50, "#444", "#222")}
+                position={[0, 0, -10]}
+              />
+
+              {/* Управление камерой мышкой */}
+              <OrbitControls makeDefault />
+              <DebugOverlay shipPosition={shipPosition} />
+            </>
+          )}
+        </Canvas>
+      </div>
+    </>
   );
 }
 
